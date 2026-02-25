@@ -13,7 +13,7 @@ def admin_panel(authorization: str = Header(None)):
     token = authorization.split(" ")[1]
     payload = decode_token(token)
 
-    #trusting the token payload without verifying the signature, just checking if is_admin is true
+    #trusting the token payload without verifying the signature, just checking if is_admin is true so this on purpose ok?
     if payload.get("is_admin") == True:
         return {"flag": settings.FLAG}
 

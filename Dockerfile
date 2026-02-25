@@ -18,7 +18,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 
-RUN mkdir -p /app/data
+#RUN mkdir -p /app/data
 
 
 COPY . .
@@ -30,4 +30,4 @@ USER ctfuser
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--reload", "--reload-dir", ".", "--reload-dir", "app/templates", "--reload-dir", "app/static", "--host", "0.0.0.0", "--port", "8000"]

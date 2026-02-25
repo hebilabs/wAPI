@@ -9,11 +9,11 @@
 <body class="bg-gray-900 text-white min-h-screen">
 
     <nav class="bg-gray-800 p-4 flex justify-between">
-        <div class="font-bold">OWASP Store CTF</div>
+        <div class="font-bold">wAPI</div>
         <div class="space-x-4">
             <a href="/" class="hover:text-green-400">Home</a>
-            <a href="/products-view" class="hover:text-green-400">Productos</a>
-            <a href="/cart-view" class="hover:text-green-400">Carrito</a>
+            <a href="/products-view" class="hover:text-green-400">Products</a>
+            <a href="/cart-view" class="hover:text-green-400">Cart</a>
             <a href="/login-view" class="hover:text-green-400">Login</a>
         </div>
     </nav>
@@ -22,7 +22,7 @@
         {% block content %}{% endblock %}
     </div>
 
-    <script src="/static/app.js"></script>
+<script src="{{ url_for('static', path='app.js') }}"></script>
 </body>
 
 </html>

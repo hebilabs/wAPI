@@ -12,5 +12,6 @@ services:
       - SECRET_KEY=supersecret_ctf_key
       - FLAG=CTF{owasp_api_master}
     volumes:
-      - ./data:/app/data
+      - ./templates:/app/templates
+      - ./static:/app/static
     restart: unless-stopped

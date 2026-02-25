@@ -3,7 +3,7 @@ from fastapi.templating import Jinja2Templates
 
 router = APIRouter()
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/")
 def home(request: Request):
@@ -19,4 +19,4 @@ def products_view(request: Request):
 
 @router.get("/cart-view")
 def cart_view(request: Request):
-    return templates.TemplateResponse("cart.html", {"request": request, "title": "Carrito"})
+    return templates.TemplateResponse("cart.html", {"request": request, "title": "Cart"})
