@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Form, HTTPException
-from app.services.auth import authenticate_user
+from app.services.auth import authenticate_user, create_access_token
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
@@ -10,4 +10,13 @@ def login(username: str = Form(...), password: str = Form(...)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    return dict(user)
+    token = create_access_token({
+        "user_id": user["id"],
+        "username": user["username"],
+        "is_admin": user["is_admin"]
+    })
+
+    return {
+        "access_token": token,
+        "token_type": "bearer"
+    }
