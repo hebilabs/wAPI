@@ -3,3 +3,6 @@ uvicorn
 sqlite-utils
 python-multipart
 jinja2
+pydantic
+pydantic-settings
+python-dotenv

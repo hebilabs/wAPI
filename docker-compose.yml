@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  wapi:
+    build: .
+    container_name: wapi
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - VULNERABLE_MODE=True
+      - SECRET_KEY=supersecret_ctf_key
+      - FLAG=CTF{owasp_api_master}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

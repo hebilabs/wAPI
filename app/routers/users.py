@@ -1,11 +1,15 @@
 from fastapi import APIRouter
-from app.core.database import get_db
+from app.schemas.user import UserCreate
+from app.services.user import get_user_by_id, create_user
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
-#bola
 @router.get("/{user_id}")
 def get_user(user_id: int):
-    conn = get_db()
-    user = conn.execute(f"SELECT * FROM users WHERE id={user_id}").fetchone()
+    user = get_user_by_id(user_id)
     return dict(user)
+
+@router.post("/")
+def create(user: UserCreate):
+    create_user(user)
+    return {"message": "User created"}

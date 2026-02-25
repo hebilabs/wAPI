@@ -1,10 +1,9 @@
 from fastapi import APIRouter
-from app.core.database import get_db
+from app.services.product import list_products
 
 router = APIRouter(prefix="/products", tags=["Products"])
-#data ex
+
 @router.get("/")
-def list_products():
-    conn = get_db()
-    products = conn.execute("SELECT * FROM products").fetchall()
+def get_products():
+    products = list_products()
     return [dict(p) for p in products]
