@@ -29,3 +29,5 @@ secrets.toml
 dist/
 build/
 *.egg-info/
+*.db
+database.db
