@@ -1,28 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
+  <head>
     <title>{{ title }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
+  </head>
 
-<body class="bg-gray-900 text-white min-h-screen">
-
-    <nav class="bg-gray-800 p-4 flex justify-between">
-        <div class="font-bold">wAPI</div>
-        <div class="space-x-4">
-            <a href="/" class="hover:text-green-400">Home</a>
-            <a href="/products-view" class="hover:text-green-400">Products</a>
-            <a href="/cart-view" class="hover:text-green-400">Cart</a>
-            <a href="/login-view" class="hover:text-green-400">Login</a>
-        </div>
+  <body class="bg-white text-gray-900 min-h-screen">
+    <nav class="bg-white px-12 py-4 flex justify-between duration-500">
+      <div class="font-bold font-mono text-lg">wAPI</div>
+      <div class="space-x-4 flex flex-row items-center">
+        <a href="/" class="hover:text-red-500">Home</a>
+        <a href="/products-view" class="hover:text-red-500">Products</a>
+        <a href="/cart-view" class="hover:text-red-500"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+            />
+          </svg>
+        </a>
+        <a href="/login-view" class="hover:text-red-500"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+            />
+          </svg>
+        </a>
+      </div>
     </nav>
 
-    <div class="p-10">
-        {% block content %}{% endblock %}
-    </div>
+    <div class="p-10">{% block content %}{% endblock %}</div>
 
-<script src="{{ url_for('static', path='app.js') }}"></script>
-</body>
-
+    <script src="{{ url_for('static', path='app.js') }}"></script>
+  </body>
 </html>

@@ -31,3 +31,4 @@ build/
 *.egg-info/
 *.db
 database.db
+database.db
