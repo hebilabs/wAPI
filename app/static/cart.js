@@ -47,29 +47,47 @@ async function loadCart() {
         return;
       }
 
+      const itemSubtotal = item.price * item.quantity;
+      const originalSubtotal = item.price * 2 * item.quantity;
+
       html += `
-        <div class="flex justify-between items-center border p-4 rounded-lg">
-          <div class="w-[50%]">
-            <h3 class="font-semibold text-gray-700">${item.name}</h3>
-            <p class="text-gray-600 font-mono">$${item.price} x ${item.quantity}</p>
-          </div>
+  <div class="flex items-start gap-4 py-6 border-b border-zinc-100 group">
+    <div class="w-24 h-32 flex-shrink-0 bg-zinc-100 overflow-hidden">
+      <img src="${item.image_url}" alt="${item.name}" class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500">
+    </div>
 
-          <div>
-            <img src="${item.image_url}" alt="${item.name}" class="w-24 h-24 object-cover rounded">
-          </div>
-
-          <div class="flex items-center space-x-2">
-            <button onclick="updateQty(${item.product_id}, ${item.quantity - 1})" class="px-2 bg-gray-200 rounded">-</button>
-            <span class="w-4 text-center">${item.quantity}</span>
-            <button onclick="updateQty(${item.product_id}, ${item.quantity + 1})" class="px-2 bg-gray-200 rounded">+</button>
-            <button onclick="removeItem(${item.product_id})" class="text-red-500 hover:text-red-600 duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-              </svg>
-            </button>
-          </div>
+    <div class="flex-1 flex flex-col justify-between h-32">
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 class="text-xs font-black uppercase tracking-widest text-zinc-900">${item.name}</h3>
+          <p class="text-[10px] text-zinc-400 uppercase mt-1 tracking-tighter">Unit: $${item.price}</p>
         </div>
-      `;
+        
+        <button onclick="removeItem(${item.product_id})" class="text-zinc-300 hover:text-red-600 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex justify-between items-end">
+        <div class="flex items-center border border-zinc-200 bg-white">
+          <button onclick="updateQty(${item.product_id}, ${item.quantity - 1})" 
+                  class="px-3 py-1 text-zinc-500 hover:bg-zinc-100 transition-colors text-sm font-bold">-</button>
+          <span class="px-3 py-1 text-[11px] font-black border-x border-zinc-200 min-w-[35px] text-center">${item.quantity}</span>
+          <button onclick="updateQty(${item.product_id}, ${item.quantity + 1})" 
+                  class="px-3 py-1 text-zinc-500 hover:bg-zinc-100 transition-colors text-sm font-bold">+</button>
+        </div>
+
+        <div class="text-right">
+          <p class="text-[10px] text-zinc-400 uppercase tracking-widest mb-1">Subtotal</p>
+          <p class="text-xs text-zinc-300 line-through font-mono leading-none">$${originalSubtotal}</p>
+          <p class="text-base font-black text-black font-mono leading-none mt-1">$${itemSubtotal}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
     });
 
     cartContainer.innerHTML = html;

@@ -28,17 +28,20 @@ if (productList) {
     .then((products) => {
       products.forEach((p) => {
         productList.innerHTML += `
+       
                 <div class="group relative flex flex-col bg-white transition-all duration-500">
   <div class="relative overflow-hidden bg-zinc-100 h-[450px]">
     <span class="absolute top-4 left-4 z-10 bg-black text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">
       New Arrival
     </span>
-
+    
+     <div class="group cursor-pointer" onclick="window.location.href='/product/${p.id}'">
     <img 
       src="${p.image_url}" 
       alt="${p.name}" 
       class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
     >
+    </div>
 
     <button 
       class="add-to-cart absolute bottom-0 w-full bg-black/90 text-white py-4 text-xs font-bold uppercase tracking-[0.2em] translate-y-full group-hover:translate-y-0 transition-transform duration-300 backdrop-blur-sm"

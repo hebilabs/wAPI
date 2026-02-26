@@ -73,3 +73,33 @@ form.addEventListener("submit", async (e) => {
     loginBtn.textContent = "Login";
   }
 });
+
+/**
+ * Checking if user is already authenticated
+ */
+async function checkAuth() {
+  console.log("Entering");
+  const token = localStorage.getItem("token");
+  if (token) {
+    try {
+      const res = await fetch("/auth/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        window.location.href = `/profile/${data.user_id}`;
+      } else {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+      }
+    } catch {
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    }
+  }
+}
+
+checkAuth();
