@@ -28,7 +28,7 @@ def init_db():
     cursor.executescript("""
     CREATE TABLE users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT,
+        email TEXT,
         password TEXT,
         is_admin INTEGER DEFAULT 0
     );
@@ -46,14 +46,15 @@ def init_db():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER,
         product_id INTEGER,
+        image_url TEXT,
         quantity INTEGER
     );
 
-    INSERT INTO users (username,password,is_admin)
-    VALUES ('admin','admin123',1);
+    INSERT INTO users (email,password,is_admin)
+    VALUES ('admin@mail.com','4dMin432.',1);
 
-    INSERT INTO users (username,password,is_admin)
-    VALUES ('user','password',0);
+    INSERT INTO users (email,password,is_admin)
+    VALUES ('user@mail.com','password',0);
 
     INSERT INTO products (name, description, price, image_url, internal_cost)
     VALUES 

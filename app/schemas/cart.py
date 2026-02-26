@@ -9,7 +9,8 @@ class CartCreate(BaseModel):
 
 class AddToCartSchema(BaseModel):
     product_id: int
-    user_id: int
+    image_url: str | None = None
+    user_id: int | None = None
 
 
 class UserCartSchema(BaseModel):
@@ -17,6 +18,6 @@ class UserCartSchema(BaseModel):
 
 
 class UpdateCartSchema(BaseModel):
-    user_id: int
+    user_id: int | None = None
     product_id: int
     quantity: int

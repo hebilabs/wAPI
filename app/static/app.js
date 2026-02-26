@@ -1,3 +1,5 @@
+const token = localStorage.getItem("token");
+
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
@@ -18,15 +20,6 @@ if (loginForm) {
     );
   });
 }
-
-/* const cartItems = document.getElementById("cartItems");
-if (cartItems) {
-  fetch("/cart/1")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    });
-} */
 
 const productList = document.getElementById("productList");
 if (productList) {
@@ -62,15 +55,20 @@ document.addEventListener("click", function (e) {
   if (e.target.closest(".add-to-cart")) {
     const button = e.target.closest(".add-to-cart");
     const productId = button.dataset.id;
+    const imageUrl =
+      button.parentElement.parentElement.querySelector("img").src;
+
+    console.log("Image url", imageUrl);
 
     fetch("/cart/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         product_id: parseInt(productId),
-        user_id: 1,
+        image_url: imageUrl,
       }),
     })
       .then((res) => res.json())

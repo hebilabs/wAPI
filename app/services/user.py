@@ -10,8 +10,8 @@ def create_user(user_data):
     cursor = conn.cursor()
 
     cursor.execute(f"""
-        INSERT INTO users (username,password,is_admin)
-        VALUES ('{user_data.username}','{user_data.password}',{user_data.is_admin})
+        INSERT INTO users (email,password,is_admin)
+        VALUES ('{user_data.email}','{user_data.password}',{user_data.is_admin})
     """)
 
     conn.commit()

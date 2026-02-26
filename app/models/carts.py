@@ -3,4 +3,5 @@ class CartItem:
         self.id = id
         self.user_id = user_id
         self.product_id = product_id
+        self.image_url = None
         self.quantity = quantity

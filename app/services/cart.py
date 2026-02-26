@@ -1,5 +1,5 @@
 from app.core.database import get_db
-from app.schemas.cart import AddToCartSchema
+from app.schemas.cart import AddToCartSchema, UpdateCartSchema
 
 
 def add_product_to_cart(payload: AddToCartSchema):
@@ -21,9 +21,9 @@ def add_product_to_cart(payload: AddToCartSchema):
         """, (existing[0],))
     else:
         cursor.execute("""
-            INSERT INTO cart (user_id, product_id, quantity)
-            VALUES (?, ?, 1)
-        """, (payload.user_id, payload.product_id))
+            INSERT INTO cart (user_id, product_id, image_url, quantity)
+            VALUES (?, ?, ?, 1)
+        """, (payload.user_id, payload.product_id, payload.image_url))
 
     conn.commit()
     conn.close()
@@ -36,7 +36,7 @@ def get_cart(user_id: int):
     cursor = conn.cursor()
 
     cursor.execute("""
-        SELECT p.id, p.name, p.price, c.quantity
+        SELECT p.id, p.name, p.price, c.quantity, p.image_url 
         FROM cart c
         JOIN products p ON c.product_id = p.id
         WHERE c.user_id = ?
@@ -57,6 +57,7 @@ def get_cart(user_id: int):
             "name": item[1],
             "price": item[2],
             "quantity": item[3],
+            "image_url": item[4],
             "subtotal": product_total
         })
 
@@ -92,9 +93,10 @@ def checkout(user_id: int):
     }
 
 
-def update_quantity(payload):
+def update_quantity(payload: UpdateCartSchema):
     conn = get_db()
     cursor = conn.cursor()
+    print(f"Update cart: ${payload}")
 
     if payload.quantity <= 0:
         cursor.execute("""
