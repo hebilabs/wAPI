@@ -96,7 +96,6 @@ def checkout(user_id: int):
 def update_quantity(payload: UpdateCartSchema):
     conn = get_db()
     cursor = conn.cursor()
-    print(f"Update cart: ${payload}")
 
     if payload.quantity <= 0:
         cursor.execute("""

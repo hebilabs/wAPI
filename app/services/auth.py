@@ -1,4 +1,4 @@
-from dbm import sqlite3
+import sqlite3
 from typing import Dict, Optional
 
 from app.core.database import get_db
@@ -19,7 +19,7 @@ def authenticate_user(email: str, password: str) -> Optional[Dict]:
 
         # SQLi vuln intentionally
         query = f"""
-            SELECT id, email, role
+            SELECT id, email, is_admin
             FROM users
             WHERE email = '{email}'
             AND password = '{password}'

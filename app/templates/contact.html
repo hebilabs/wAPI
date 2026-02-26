@@ -1,0 +1,126 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+  class="min-h-screen bg-zinc-50 flex items-center justify-center py-20 px-6 font-sans"
+>
+  <div
+    class="max-w-6xl w-full bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden border border-zinc-100"
+  >
+    <div
+      class="md:w-1/3 bg-black p-12 text-white flex flex-col justify-between"
+    >
+      <div>
+        <h2
+          class="text-xs font-bold uppercase tracking-[0.5em] text-zinc-500 mb-4"
+        >
+          Contact
+        </h2>
+        <h1
+          class="text-5xl font-black uppercase tracking-tighter leading-none mb-12"
+        >
+          Get in <br />Touch.
+        </h1>
+
+        <div class="space-y-8">
+          <div>
+            <p
+              class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1"
+            >
+              HQ Location
+            </p>
+            <p class="text-sm font-medium tracking-tight">
+              Medellín, Colombia <br />
+              Industrial District 026
+            </p>
+          </div>
+          <div>
+            <p
+              class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1"
+            >
+              Electronic Mail
+            </p>
+            <p class="text-sm font-medium tracking-tight">support@wapi.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-4 pt-12 border-t border-zinc-900 mt-12">
+        <a
+          href="#"
+          class="text-[10px] font-bold uppercase tracking-widest hover:text-zinc-400 transition"
+          >Instagram</a
+        >
+        <a
+          href="#"
+          class="text-[10px] font-bold uppercase tracking-widest hover:text-zinc-400 transition"
+          >TikTok</a
+        >
+      </div>
+    </div>
+
+    <div class="md:w-2/3 p-12 lg:p-20 bg-white">
+      <form id="contactForm" class="space-y-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div class="relative group">
+            <label
+              class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"
+              >Full Name</label
+            >
+            <input
+              type="text"
+              class="w-full border-b-2 border-zinc-100 py-3 focus:outline-none focus:border-black transition-colors bg-transparent"
+              placeholder="Your name..."
+            />
+          </div>
+          <div class="relative group">
+            <label
+              class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              class="w-full border-b-2 border-zinc-100 py-3 focus:outline-none focus:border-black transition-colors bg-transparent"
+              placeholder="email@wapi.com"
+            />
+          </div>
+        </div>
+
+        <div class="relative group">
+          <label
+            class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"
+            >Inquiry Type</label
+          >
+          <select
+            class="w-full border-b-2 border-zinc-100 py-3 focus:outline-none focus:border-black transition-colors appearance-none bg-transparent rounded-none"
+          >
+            <option>Customer Support</option>
+            <option>Press & Media</option>
+            <option>Wholesale</option>
+            <option>Collaboration</option>
+          </select>
+        </div>
+
+        <div class="relative group">
+          <label
+            class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"
+            >Message</label
+          >
+          <textarea
+            rows="4"
+            class="w-full border-b-2 border-zinc-100 py-3 focus:outline-none focus:border-black transition-colors resize-none bg-transparent"
+            placeholder="Tell us everything..."
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-black text-white px-12 py-5 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-zinc-800 transition-all active:scale-95 w-full md:w-auto"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

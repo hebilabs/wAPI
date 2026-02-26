@@ -12,8 +12,23 @@
         <a href="/">wAPI</a>
       </div>
       <div class="space-x-4 flex flex-row items-center">
-        <a href="/shop" class="hover:text-red-500">Shop</a>
-        <a href="/bag" class="hover:text-red-500"
+        <a
+          href="/about-us"
+          class="hover:text-red-500 uppercase uppercase tracking-[0.1em] text-zinc-500 text-sm"
+          >About</a
+        >
+        <a
+          href="/shop"
+          class="hover:text-red-500 uppercase uppercase tracking-[0.1em] text-zinc-500 text-sm"
+          >Shop</a
+        >
+        <a
+          href="/contact"
+          class="hover:text-red-500 uppercase uppercase tracking-[0.1em] text-zinc-500 text-sm"
+          >Contact</a
+        >
+        <div class="w-content"></div>
+        <a href="/bag" class="hover:text-red-500 -mt-1 text-zinc-500"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -29,7 +44,7 @@
             />
           </svg>
         </a>
-        <a href="/login" class="hover:text-red-500"
+        <a href="/login" class="hover:text-red-500 -mt-1 text-zinc-500"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -51,5 +66,6 @@
     <div class="p-0">{% block content %}{% endblock %}</div>
 
     <script src="{{ url_for('static', path='app.js') }}"></script>
+    <script src="{{ url_for('static', path='toast.js') }}"></script>
   </body>
 </html>

@@ -25,5 +25,4 @@ def login(payload: LoginSchema):
     
 @router.get("/me")
 def get_profile(current_user=Depends(get_current_user)):
-    print(f"Current user: {current_user}")
     return current_user

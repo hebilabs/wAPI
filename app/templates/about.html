@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="min-h-screen bg-white">
+  <section
+    class="relative h-[70vh] flex items-center justify-center overflow-hidden"
+  >
+    <img
+      src="https://images.pexels.com/photos/3810832/pexels-photo-3810832.jpeg"
+      class="absolute inset-0 w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition-all duration-1000"
+    />
+    <div class="relative z-10 text-center px-6">
+      <h1
+        class="text-white text-7xl md:text-[12rem] font-black tracking-tighter leading-none"
+      >
+        wAPI
+      </h1>
+      <p
+        class="text-white text-xs font-bold uppercase tracking-[0.6em] mt-4 shadow-black text-shadow-sm"
+      >
+        Hebi Labs // Est. 2026
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto py-32 px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+      <div>
+        <h2
+          class="text-xs font-bold uppercase tracking-[0.4em] text-zinc-400 mb-8 underline decoration-black underline-offset-8"
+        >
+          Philosophy
+        </h2>
+        <p
+          class="text-3xl font-black uppercase tracking-tighter leading-tight text-black"
+        >
+          We are not a brand. <br />
+          We are the echo <br />
+          of the streets.
+        </p>
+      </div>
+      <div class="space-y-6 text-zinc-500 font-light leading-relaxed text-sm">
+        <p>
+          wAPI was born in the heart of Hebi Labs as a response to soulless
+          fast-fashion (Tss Tss). We believe in durability, the weight of the
+          fabric, and the culture that comes alive after 10 PM.
+        </p>
+        <p>
+          Each piece is designed, cut, and assembled with urban architecture in
+          mind. We don't follow trends; we create the uniform for those who
+          prefer anonymity but demand excellence.
+        </p>
+        <div class="pt-6">
+          <span
+            class="text-[10px] font-mono text-black border border-black px-4 py-2 uppercase tracking-widest"
+            >Quality Over Noise</span
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}

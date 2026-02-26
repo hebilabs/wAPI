@@ -56,3 +56,12 @@ def profile_view(request: Request, user_id: int):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return templates.TemplateResponse("profile.html", {"request": request, "title": "Profile", "user": user})    
+
+
+@router.get("/contact")
+def cart_view(request: Request):
+    return templates.TemplateResponse("contact.html", {"request": request, "title": "Contact Us"})
+
+@router.get("/about-us")
+def cart_view(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request, "title": "About Us"})

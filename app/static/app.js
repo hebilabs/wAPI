@@ -1,5 +1,4 @@
 const token = localStorage.getItem("token");
-
 const loginForm = document.getElementById("loginForm");
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
@@ -77,45 +76,6 @@ if (productList) {
     });
 }
 
-function showCartToast(productName, imageUrl) {
-  let container = document.getElementById("toast-container");
-  if (!container) {
-    container = document.createElement("div");
-    container.id = "toast-container";
-    container.className = "fixed bottom-5 right-5 z-[100] flex flex-col gap-3";
-    document.body.appendChild(container);
-  }
-
-  const toast = document.createElement("div");
-  toast.className = `
-        flex items-center w-80 bg-black text-white p-4 shadow-2xl transform translate-x-full 
-        transition-all duration-500 ease-out border-l-4 border-red-600 backdrop-blur-md bg-opacity-90
-    `;
-
-  toast.innerHTML = `
-        <img src="${imageUrl}" class="w-12 h-12 object-cover mr-4 border border-zinc-800">
-        <div class="flex-1">
-            <p class="text-[10px] uppercase tracking-widest text-zinc-400 font-bold">Added to Bag</p>
-            <p class="text-xs font-bold truncate uppercase tracking-tighter">${productName}</p>
-        </div>
-        <button class="ml-4 text-zinc-500 hover:text-white">&times;</button>
-    `;
-
-  container.appendChild(toast);
-
-  setTimeout(() => {
-    toast.classList.remove("translate-x-full");
-  }, 10);
-
-  const removeToast = () => {
-    toast.classList.add("opacity-0", "translate-y-2");
-    setTimeout(() => toast.remove(), 500);
-  };
-
-  setTimeout(removeToast, 4000);
-  toast.querySelector("button").onclick = removeToast;
-}
-
 document.addEventListener("click", async function (e) {
   if (e.target.closest(".add-to-cart")) {
     const button = e.target.closest(".add-to-cart");
@@ -136,7 +96,12 @@ document.addEventListener("click", async function (e) {
     });
 
     if (response.ok) {
-      showCartToast(productName, imageUrl);
+      ToastManager.show({
+        type: "success",
+        content:
+          '<span class="text-[10px] font-bold uppercase tracking-widest leading-none">Product added to the cart</span>',
+        duration: 3000,
+      });
     }
     if (response.status === 401) {
       window.location.href = "/login";

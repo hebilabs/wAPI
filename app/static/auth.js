@@ -31,6 +31,10 @@ function validatePassword() {
   return true;
 }
 
+/**
+ * Handle form submission for login
+ */
+
 emailInput.addEventListener("input", validateEmail);
 passwordInput.addEventListener("input", validatePassword);
 
