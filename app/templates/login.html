@@ -1,44 +1,91 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="min-h-screen flex items-center justify-center bg-gray-100">
-  <div class="bg-white shadow-xl rounded-xl p-8 w-full max-w-md">
-    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
-      Welcome Back
-    </h2>
+<div class="min-h-screen flex py-10 bg-white lg:bg-zinc-50 px-6">
+  <div
+    class="bg-white w-full max-w-sm lg:p-12 lg:shadow-[0_0_50px_-12px_rgba(0,0,0,0.1)] transition-all m-auto mt-0"
+  >
+    <div class="mb-12 text-center lg:text-left">
+      <h2
+        class="text-xs font-bold uppercase tracking-[0.5em] text-zinc-400 mb-2"
+      >
+        Member Access
+      </h2>
+      <h1 class="text-4xl font-black uppercase tracking-tighter text-black">
+        Welcome <br />Back.
+      </h1>
+    </div>
 
-    <form id="loginForm" class="space-y-4">
-      <div>
-        <label class="block text-sm text-gray-600 mb-1">Email</label>
+    <form id="loginForm" class="space-y-6">
+      <div class="relative group">
+        <label
+          class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1 transition-colors group-focus-within:text-black"
+          >Email Address</label
+        >
         <input
           type="email"
           id="email"
-          class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-          placeholder="you@example.com"
+          class="w-full border-b-2 border-zinc-200 bg-transparent py-3 focus:outline-none focus:border-black transition-colors placeholder:text-zinc-300 text-sm font-medium"
+          placeholder="name@mail.com"
+          required
         />
-        <p id="emailError" class="text-red-500 text-sm hidden mt-1"></p>
+        <p
+          id="emailError"
+          class="text-red-600 text-[10px] font-bold uppercase mt-1 hidden"
+        ></p>
       </div>
 
-      <div>
-        <label class="block text-sm text-gray-600 mb-1">Password</label>
+      <div class="relative group">
+        <div class="flex justify-between items-center mb-1">
+          <label
+            class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 transition-colors group-focus-within:text-black"
+            >Password</label
+          >
+          <a
+            href="#"
+            class="text-[10px] font-bold uppercase text-zinc-400 hover:text-black transition-colors"
+            >Forgot?</a
+          >
+        </div>
         <input
           type="password"
           id="password"
-          class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+          class="w-full border-b-2 border-zinc-200 bg-transparent py-3 focus:outline-none focus:border-black transition-colors placeholder:text-zinc-300 text-sm font-medium"
           placeholder="••••••••"
+          required
         />
-        <p id="passwordError" class="text-red-500 text-sm hidden mt-1"></p>
+        <p
+          id="passwordError"
+          class="text-red-600 text-[10px] font-bold uppercase mt-1 hidden"
+        ></p>
       </div>
 
-      <button
-        id="loginBtn"
-        type="submit"
-        class="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition disabled:opacity-50"
-      >
-        Login
-      </button>
+      <div class="pt-4">
+        <button
+          id="loginBtn"
+          type="submit"
+          class="w-full bg-black text-white py-4 font-bold uppercase text-xs tracking-[0.3em] hover:bg-zinc-800 transition-all active:scale-[0.98] disabled:opacity-50"
+        >
+          Sign In
+        </button>
+      </div>
 
-      <p id="loginError" class="text-red-600 text-center text-sm hidden"></p>
+      <p
+        id="loginError"
+        class="text-red-600 text-center text-[10px] font-bold uppercase hidden"
+      ></p>
     </form>
+
+    <div class="mt-12 text-center pt-8 border-t border-zinc-100">
+      <p class="text-xs text-zinc-500">
+        Don't have an account?
+        <a
+          href="/register"
+          class="text-black font-black uppercase tracking-widest ml-2 hover:underline decoration-2 underline-offset-4"
+        >
+          Register Here
+        </a>
+      </p>
+    </div>
   </div>
 </div>
 

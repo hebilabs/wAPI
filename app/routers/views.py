@@ -11,16 +11,16 @@ def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "title": "Home"})
 
 
-@router.get("/login-view")
+@router.get("/login")
 def login_view(request: Request):
     return templates.TemplateResponse("login.html", {"request": request, "title": "Login"})
 
 
-@router.get("/products-view")
+@router.get("/shop")
 def products_view(request: Request):
     return templates.TemplateResponse("products.html", {"request": request, "title": "Products"})
 
 
-@router.get("/cart-view")
+@router.get("/bag")
 def cart_view(request: Request):
     return templates.TemplateResponse("cart.html", {"request": request, "title": "Cart"})

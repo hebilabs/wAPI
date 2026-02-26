@@ -1,34 +1,82 @@
 {% extends "base.html" %} {% block content %}
+<div class="px-24">
+  <h2 class="text-2xl mb-6 font-sans font-semibold uppercase">Shop</h2>
 
-<h2 class="text-2xl mb-6 font-sans font-semibold">Catalog</h2>
-
-<div class="bg-gray-200 h-72 w-full rounded-lg relative">
-  <img
-    id="productImage"
-    src="https://images.pexels.com/photos/8483487/pexels-photo-8483487.jpeg"
-    alt="Product Image"
-    class="h-full w-full object-cover rounded-lg"
-  />
   <div
-    class="absolute w-full h-full top-0 left-0 bg-black/30 rounded-lg text-white p-4 flex items-center justify-center"
+    class="relative w-full h-[500px] overflow-hidden group rounded-sm shadow-xl bg-zinc-900"
   >
-    <div class="m-auto w-1/2 text-center space-y-4">
-      <h3 class="text-center text-4xl uppercase font-bold">
-        New Season is here!
-      </h3>
-      <p class="text-xl">
-        Check out our latest collection of summer wear and get ready to shine
-        this season.
+    <img
+      src="https://images.pexels.com/photos/8483487/pexels-photo-8483487.jpeg"
+      alt="Summer Collection"
+      class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+    />
+
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"
+    ></div>
+
+    <div
+      class="relative h-full max-w-7xl mx-auto px-8 md:px-16 flex flex-col justify-center items-start"
+    >
+      <span
+        class="mb-4 inline-block px-3 py-1 bg-white text-black text-[10px] font-bold uppercase tracking-widest animate-pulse"
+      >
+        Limited Drop
+      </span>
+
+      <div class="space-y-2 max-w-xl">
+        <h3
+          class="text-white text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none"
+        >
+          THE SEASON <br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500"
+            >IS HERE.</span
+          >
+        </h3>
+
+        <div class="flex items-center space-x-4">
+          <p
+            class="text-zinc-300 text-lg md:text-xl font-light max-w-md leading-tight"
+          >
+            Upgrade your rotation with our summer essentials.
+          </p>
+          <span
+            class="text-4xl md:text-5xl font-outline font-black text-white italic"
+            >-50%</span
+          >
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-4">
+        <button
+          class="px-8 py-4 bg-white text-black text-sm font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all active:scale-95"
+        >
+          Shop Collection
+        </button>
+        <button
+          class="px-8 py-4 border border-white text-white text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all"
+        >
+          View Lookbook
+        </button>
+      </div>
+    </div>
+
+    <div class="absolute bottom-6 right-8 hidden md:block">
+      <p
+        class="text-[10px] text-white/50 uppercase tracking-[0.3em] [writing-mode:vertical-lr]"
+      >
+        wAPI // Summer 2026
       </p>
     </div>
   </div>
-</div>
 
-<div class="mt-10">
-  <div
-    id="productList"
-    class="md:grid md:grid-cols-3 xl:grid-cols-4 gap-6"
-  ></div>
+  <div class="mt-10">
+    <div
+      id="productList"
+      class="md:grid md:grid-cols-3 xl:grid-cols-4 gap-6"
+    ></div>
+  </div>
 </div>
-
-{% endblock %}
+<br />
+{% include 'footer.html' %} {% endblock %}

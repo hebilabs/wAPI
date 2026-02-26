@@ -61,7 +61,7 @@ form.addEventListener("submit", async (e) => {
 
     if (data.access_token) {
       localStorage.setItem("token", data.access_token);
-      window.location.href = "/products-view";
+      window.location.href = "/shop";
     } else {
       throw new Error("Invalid credentials");
     }
