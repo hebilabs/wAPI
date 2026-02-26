@@ -1,9 +1,8 @@
-from http.client import HTTPException
-
-from fastapi import Depends
+from fastapi import Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jose import jwt
 from app.core.config import get_settings
+from jose.exceptions import JWTError
 
 settings = get_settings()
 security = HTTPBearer()
@@ -26,7 +25,10 @@ def get_current_user(
             algorithms=["HS256"]
         )
         return payload
-    except jwt.ExpiredSignatureError:
+    except JWTError:
         raise HTTPException(status_code=401, detail="Token expired")
-    except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
+    except JWTError:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid token"
+        )
