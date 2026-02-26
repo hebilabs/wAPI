@@ -1,5 +1,6 @@
 const token = localStorage.getItem("token");
 const loginForm = document.getElementById("loginForm");
+
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();

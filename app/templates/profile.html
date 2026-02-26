@@ -33,7 +33,7 @@
             >Personal Info</a
           >
           <a
-            href="/cart"
+            href="#"
             class="text-[10px] font-bold uppercase tracking-widest py-2 text-zinc-400 hover:text-black border-l-4 border-transparent pl-4 transition"
             >Order History</a
           >
@@ -47,6 +47,7 @@
         <div class="pt-8">
           <button
             class="text-[10px] font-black uppercase tracking-[0.2em] text-red-600 hover:underline"
+            onclick="logout()"
           >
             Log Out
           </button>
@@ -68,7 +69,7 @@
                 >Full Name</label
               >
               <p class="text-sm font-bold uppercase tracking-tighter mt-1">
-                {{ user.name }}
+                {{ user.fullname }}
               </p>
             </div>
             <button
@@ -142,5 +143,7 @@
     </div>
   </div>
 </div>
+
+<script src="{{ url_for('static', path='profile.js') }}"></script>
 
 {% endblock %}
