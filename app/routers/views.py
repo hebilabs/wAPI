@@ -59,9 +59,9 @@ def profile_view(request: Request, user_id: int):
 
 
 @router.get("/contact")
-def cart_view(request: Request):
+def contact_view(request: Request):
     return templates.TemplateResponse("contact.html", {"request": request, "title": "Contact Us"})
 
 @router.get("/about-us")
-def cart_view(request: Request):
+def about_us_view(request: Request):
     return templates.TemplateResponse("about.html", {"request": request, "title": "About Us"})
