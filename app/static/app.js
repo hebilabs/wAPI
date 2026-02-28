@@ -40,6 +40,7 @@ if (productList) {
       src="${p.image_url}" 
       alt="${p.name}" 
       class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+      id="product-image"
     >
     </div>
 
@@ -81,8 +82,7 @@ document.addEventListener("click", async function (e) {
   if (e.target.closest(".add-to-cart")) {
     const button = e.target.closest(".add-to-cart");
     const productId = button.dataset.id;
-    const imageUrl =
-      button.parentElement.parentElement.querySelector("img").src;
+    const imageUrl = document.getElementById("product-image").src;
 
     const response = await fetch("/cart/add", {
       method: "POST",

@@ -13,7 +13,7 @@ def add_product_to_cart(payload: AddToCartSchema) -> Dict[str, Any]:
     Add a product to the user's cart, incrementing quantity if it already exists.
     """
     conn: Optional[sqlite3.Connection] = None
-
+    print(payload)
     try:
         conn = get_db()
         cursor = conn.cursor()

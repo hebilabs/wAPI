@@ -10,7 +10,7 @@ class CartCreate(BaseModel):
 class AddToCartSchema(BaseModel):
     product_id: int = Field(..., description="The ID of the product", example=1)
     image_url: str | None = Field(..., description="The image URL of the product", example="https://example.com/product.jpg")
-    user_id: int | None = Field(..., description="The ID of the user", example=1)
+    user_id: int | None = None
 
 
 class UserCartSchema(BaseModel):
