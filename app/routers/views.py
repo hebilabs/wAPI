@@ -65,3 +65,7 @@ def contact_view(request: Request):
 @router.get("/about-us")
 def about_us_view(request: Request):
     return templates.TemplateResponse("about.html", {"request": request, "title": "About Us"})
+
+@router.get("/checkout")
+def checkout(request: Request):
+    return templates.TemplateResponse("checkout.html", {"request": request, "title": "Checkout"})

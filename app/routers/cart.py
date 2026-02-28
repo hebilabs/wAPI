@@ -4,8 +4,19 @@ from fastapi import APIRouter, Depends
 from starlette import status
 
 from app.core.security import get_current_user
-from app.schemas.cart import AddToCartSchema, UpdateCartSchema, UserCartSchema
-from app.services.cart import add_product_to_cart, checkout, get_cart, update_quantity
+from app.schemas.cart import (
+    AddToCartSchema,
+    CheckoutCodeSchema,
+    UpdateCartSchema,
+    UserCartSchema,
+)
+from app.services.cart import (
+    add_product_to_cart,
+    checkout,
+    checkout_with_code,
+    get_cart,
+    update_quantity,
+)
 
 router = APIRouter(
     prefix="/cart",
@@ -70,3 +81,18 @@ def process_checkout(payload: UserCartSchema) -> Any:
     """
     # Intentionally allowing user_id to come directly from the payload.
     return checkout(payload.user_id)
+
+
+@router.post(
+    "/checkout/payment",
+    status_code=status.HTTP_200_OK,
+    summary="Checkout the current user's cart using a fake payment code",
+)
+def process_checkout_with_code(
+    payload: CheckoutCodeSchema,
+    current_user=Depends(get_current_user),
+) -> Any:
+    """
+    Process checkout for the current user using a fake payment code.
+    """
+    return checkout_with_code(current_user["user_id"], payload.code)

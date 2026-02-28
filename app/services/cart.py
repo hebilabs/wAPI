@@ -173,6 +173,86 @@ def checkout(user_id: int) -> Dict[str, Any]:
             conn.close()
 
 
+def checkout_with_code(user_id: int, code: str) -> Dict[str, Any]:
+    """
+    Perform a checkout for the given user using a fake payment code.
+
+    Stores the transaction in the database and clears the cart.
+    """
+    conn: Optional[sqlite3.Connection] = None
+
+    try:
+        conn = get_db()
+        cursor = conn.cursor()
+
+        # Ensure a transactions table exists (created lazily).
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS transactions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER,
+                code TEXT,
+                total REAL,
+                created_at TEXT
+            )
+            """
+        )
+
+        logger.info("Checking out with code for user_id=%s", user_id)
+
+        cursor.execute(
+            """
+            SELECT p.price, c.quantity
+            FROM cart c
+            JOIN products p ON c.product_id = p.id
+            WHERE c.user_id = ?
+            """,
+            (user_id,),
+        )
+        items = cursor.fetchall()
+
+        if not items:
+            return {"message": "Cart is empty", "total_paid": 0}
+
+        total = sum(price * qty for price, qty in items)
+
+        # Fake / weak code validator kept on purpose for educational use.
+        normalized_code = (code or "").replace(" ", "")
+        if len(normalized_code) < 4:
+            return {"message": "Invalid payment code", "total_paid": 0}
+
+        # Intentionally storing the full code in plaintext for training.
+        cursor.execute(
+            """
+            INSERT INTO transactions (user_id, code, total, created_at)
+            VALUES (?, ?, ?, datetime('now'))
+            """,
+            (user_id, code, total),
+        )
+        transaction_id = cursor.lastrowid
+
+        cursor.execute("DELETE FROM cart WHERE user_id = ?", (user_id,))
+        conn.commit()
+
+        return {
+            "message": "Payment authorized",
+            "total_paid": total,
+            "transaction_id": transaction_id,
+        }
+
+    except sqlite3.Error as exc:
+        logger.error("Database error during code checkout: %s", exc)
+        return {"message": "Checkout failed", "total_paid": 0}
+
+    except Exception:
+        logger.exception("Unexpected error during code checkout")
+        return {"message": "Checkout failed", "total_paid": 0}
+
+    finally:
+        if conn:
+            conn.close()
+
+
 def update_quantity(payload: UpdateCartSchema) -> Dict[str, Any]:
     """
     Update or remove an item from the cart based on the requested quantity.

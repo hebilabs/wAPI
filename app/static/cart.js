@@ -140,3 +140,7 @@ function removeItem(productId) {
 }
 
 loadCart();
+
+function checkout() {
+  window.location.href = "/checkout";
+}

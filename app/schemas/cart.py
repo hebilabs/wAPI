@@ -20,4 +20,12 @@ class UserCartSchema(BaseModel):
 class UpdateCartSchema(BaseModel):
     user_id: int | None = Field(..., description="The ID of the user", example=1)
     product_id: int = Field(..., description="The ID of the product", example=1)
-    quantity: int = Field(..., description="The quantity of the product", example=1)    
+    quantity: int = Field(..., description="The quantity of the product", example=1)
+
+
+class CheckoutCodeSchema(BaseModel):
+    code: str = Field(
+        ...,
+        description="Fake payment code used for checkout",
+        example="4242 4242 4242 4242",
+    )
