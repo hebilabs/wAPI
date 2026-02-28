@@ -5,6 +5,7 @@ asarPy==1.0.1
 click==8.3.1
 click-default-group==1.2.4
 ecdsa==0.19.1
+email-validator>=2.0.0
 fastapi==0.133.0
 h11==0.16.0
 idna==3.11

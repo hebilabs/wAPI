@@ -32,3 +32,19 @@ def get_current_user(
             status_code=401,
             detail="Invalid token"
         )
+
+
+def get_current_admin(
+    credentials: HTTPAuthorizationCredentials = Depends(security)
+):
+    """
+    Require a valid Bearer token and that the token payload has is_admin truthy.
+    Intentionally trusts the token payload (same as admin panel).
+    """
+    payload = decode_token(credentials.credentials)
+    if not payload.get("is_admin"):
+        raise HTTPException(
+            status_code=403,
+            detail="Admin access required",
+        )
+    return payload

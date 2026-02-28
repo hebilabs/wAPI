@@ -62,6 +62,7 @@ def create_user(user_data: Any) -> Optional[Dict[str, Any]]:
         if existing_user:
             logger.warning("Attempt to register existing email: %s", user_data.email)
             return None
+    
 
         # Intentionally vulnerable: plain-text password, mass assignment, SQL injection.
         insert_query = f"""
