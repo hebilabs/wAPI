@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+  class="flex flex-col lg:flex-row min-h-[85vh] bg-white overflow-hidden items-center"
+>
+  <div class="w-full lg:w-5/12 h-[60vh] lg:h-[85vh] relative group">
+    <img
+      src="https://images.pexels.com/photos/33918350/pexels-photo-33918350.jpeg?auto=compress&cs=tinysrgb&w=600"
+      class="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105"
+      alt="Seasonal Collection"
+    />
+    <div
+      class="absolute bottom-10 left-0 bg-black text-white px-6 py-2 text-[10px] uppercase tracking-[0.4em] font-bold"
+    >
+      Editorial // 2026
+    </div>
+  </div>
+
+  <div
+    class="w-full lg:w-7/12 px-8 md:px-20 py-16 lg:py-0 flex flex-col justify-center relative bg-white"
+  >
+    <span
+      class="absolute top-10 right-0 text-[12rem] font-black text-zinc-50 select-none leading-none z-0 tracking-tighter"
+    >
+      50%
+    </span>
+
+    <div class="relative z-10 space-y-8">
+      <div class="flex items-center space-x-2">
+        <div class="h-[1px] w-8 bg-red-600"></div>
+        <span class="text-xs font-bold uppercase tracking-widest text-red-600"
+          >Seasonal Drop</span
+        >
+      </div>
+
+      <div class="space-y-4">
+        <h2
+          class="font-sans font-medium text-xl text-zinc-500 italic tracking-tight"
+        >
+          Are you ready for this Season?
+        </h2>
+        <h1
+          class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] text-black"
+        >
+          THE <span class="text-red-600">FAVES</span> <br />
+          ARE BACK.
+        </h1>
+      </div>
+
+      <p
+        class="max-w-md text-zinc-600 leading-relaxed text-sm md:text-base font-light"
+      >
+        The season is changing, and so should your wardrobe. From must-have
+        essentials to this month’s hottest trends,
+        <span
+          class="font-bold text-black underline decoration-red-500/30 underline-offset-4"
+          >everything is now at half price.</span
+        >
+        No codes, no catch.
+      </p>
+
+      <div class="pt-6 flex items-center space-x-8">
+        <a
+          href="/shop"
+          class="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-200 bg-black font-pj hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 uppercase text-xs tracking-widest"
+        >
+          Shop Now
+        </a>
+
+        <div class="hidden sm:block">
+          <p
+            class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"
+          >
+            Limited time only*
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 right-20 hidden lg:block">
+      <span class="text-[10px] font-mono text-zinc-300"
+        >LATAM // 2026_DISTRICT</span
+      >
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html' %} {% endblock %}

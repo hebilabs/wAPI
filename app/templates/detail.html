@@ -1,0 +1,162 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="min-h-screen bg-white">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <nav class="mb-8 text-[10px] uppercase tracking-[0.3em] text-zinc-400">
+      <a href="/" class="hover:text-black transition">Home</a> /
+      <a href="/shop" class="hover:text-black transition">Collection</a> /
+      <span class="text-zinc-900 font-bold">{{p.name}}</span>
+    </nav>
+
+    <div class="flex flex-col lg:flex-row gap-16">
+      <div class="lg:w-7/12 space-y-4">
+        <div class="aspect-[3/4] overflow-hidden bg-zinc-100 group">
+          <img
+            src="{{p.image_url}}"
+            alt="{{p.name}}"
+            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          />
+        </div>
+        <div class="grid grid-cols-4 gap-4">
+          <div
+            class="aspect-square bg-zinc-100 opacity-50 hover:opacity-100 transition cursor-pointer"
+          >
+            <img src="{{p.image_url}}" class="w-full h-full object-cover" />
+          </div>
+          <div class="aspect-square bg-zinc-200"></div>
+          <div class="aspect-square bg-zinc-200"></div>
+        </div>
+      </div>
+
+      <div class="lg:w-5/12 space-y-8 sticky top-24 h-fit">
+        <div>
+          <h2
+            class="text-xs font-bold uppercase tracking-[0.4em] text-red-600 mb-2 italic"
+          >
+            Special Drop // 50% Off
+          </h2>
+          <h1
+            class="text-5xl font-black uppercase tracking-tighter text-black leading-none"
+          >
+            {{p.name}}
+          </h1>
+
+          <div class="mt-4 flex items-center gap-4">
+            <span class="text-2xl font-black text-black font-mono"
+              >${{p.price}}</span
+            >
+            <span class="text-lg text-zinc-300 line-through font-mono"
+              >${{p.price * 2}}</span
+            >
+          </div>
+        </div>
+
+        <p class="text-zinc-600 leading-relaxed text-sm">
+          Designed for the urban landscape. This piece features our signature
+          heavy-weight cotton, tailored with a modern oversized fit. Every
+          detail is engineered for durability and uncompromising street style.
+        </p>
+
+        <div class="space-y-4 pt-6 border-t border-zinc-100">
+          <div class="flex flex-col gap-2">
+            <span
+              class="text-[10px] font-bold uppercase tracking-widest text-zinc-400"
+              >Select Size</span
+            >
+            <div class="flex gap-2">
+              <button
+                class="w-12 h-12 border border-black flex items-center justify-center text-xs font-bold hover:bg-black hover:text-white transition"
+              >
+                S
+              </button>
+              <button
+                class="w-12 h-12 border border-black flex items-center justify-center text-xs font-bold hover:bg-black hover:text-white transition"
+              >
+                M
+              </button>
+              <button
+                class="w-12 h-12 border border-zinc-200 flex items-center justify-center text-xs font-bold text-zinc-300 cursor-not-allowed"
+              >
+                L
+              </button>
+            </div>
+          </div>
+
+          <button
+            class="w-full bg-black text-white py-5 font-bold uppercase text-xs tracking-[0.3em] hover:bg-zinc-800 transition-all active:scale-[0.98]"
+          >
+            Add to bag
+          </button>
+        </div>
+
+        <div class="border-t border-zinc-100 pt-4">
+          <details class="group py-2">
+            <summary
+              class="list-none flex justify-between items-center cursor-pointer uppercase text-[10px] font-bold tracking-widest"
+            >
+              Materials & Care
+              <span class="group-open:rotate-180 transition">+</span>
+            </summary>
+            <p class="text-[10px] text-zinc-500 mt-4 leading-relaxed">
+              100% Organic Cotton. Cold wash only. Do not tumble dry.
+              Hand-crafted in Medellin, District 026.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-32 pt-16 border-t border-black">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+        <div class="md:w-1/3">
+          <h3 class="text-3xl font-black uppercase tracking-tighter">
+            Verified <br />Feedback.
+          </h3>
+          <div class="mt-4 flex items-center gap-2">
+            <div class="flex text-black">★★★★★</div>
+            <span
+              class="text-xs font-bold uppercase tracking-widest text-zinc-400"
+              >(24 Reviews)</span
+            >
+          </div>
+        </div>
+
+        <div class="md:w-2/3 space-y-12">
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span
+                class="text-[10px] font-black uppercase tracking-widest text-black"
+                >Julian R.</span
+              >
+              <span class="text-[10px] text-zinc-400">Feb 2026</span>
+            </div>
+            <div class="text-xs text-black italic">★★★★★</div>
+            <p class="text-sm text-zinc-600 font-light leading-relaxed">
+              "The quality of the fabric is insane. It's actually heavy-weight
+              and fits exactly how a streetwear piece should. Fast shipping to
+              Bogota too."
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span
+                class="text-[10px] font-black uppercase tracking-widest text-black"
+                >Sarah M.</span
+              >
+              <span class="text-[10px] text-zinc-400">Jan 2026</span>
+            </div>
+            <div class="text-xs text-black italic">★★★★☆</div>
+            <p class="text-sm text-zinc-600 font-light leading-relaxed">
+              "Love the design. Only giving 4 stars because it runs a bit larger
+              than expected, so definitely size down if you want a standard
+              fit."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

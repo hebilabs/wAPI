@@ -1,0 +1,146 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+  class="xl:min-h-screen flex items-center justify-center bg-white lg:bg-zinc-50 px-6 py-12"
+>
+  <div
+    class="bg-white w-full lg:max-w-sm lg:p-12 lg:shadow-[0_0_50px_-12px_rgba(0,0,0,0.1)] transition-all"
+  >
+    <div class="mb-10 text-center lg:text-left">
+      <h2
+        class="text-xs font-bold uppercase tracking-[0.5em] text-zinc-400 mb-2"
+      >
+        Member Access
+      </h2>
+      <h1 class="text-4xl font-black uppercase tracking-tighter text-black">
+        Create <br />Account.
+      </h1>
+    </div>
+
+    <form id="registerForm" class="space-y-5">
+      <div class="relative group">
+        <label
+          class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1 group-focus-within:text-black transition-colors"
+          >Full Name</label
+        >
+        <input
+          type="text"
+          id="register-name"
+          class="w-full border-b-2 border-zinc-200 bg-transparent py-3 focus:outline-none focus:border-black transition-colors placeholder:text-zinc-200 text-sm font-medium"
+          placeholder="Alexander McQueen"
+          required
+        />
+      </div>
+
+      <div class="relative group">
+        <label
+          class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1 group-focus-within:text-black transition-colors"
+          >Email Address</label
+        >
+        <input
+          type="email"
+          id="register-email"
+          class="w-full border-b-2 border-zinc-200 bg-transparent py-3 focus:outline-none focus:border-black transition-colors placeholder:text-zinc-200 text-sm font-medium"
+          placeholder="name@wapi.com"
+          required
+        />
+        <p
+          id="emailError"
+          class="text-red-600 text-[10px] font-bold uppercase mt-1 hidden"
+        ></p>
+      </div>
+
+      <div class="relative group">
+        <label
+          class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1 group-focus-within:text-black transition-colors"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="register-password"
+          class="w-full border-b-2 border-zinc-200 bg-transparent py-3 focus:outline-none focus:border-black transition-colors placeholder:text-zinc-300 text-sm font-medium"
+          placeholder="••••••••"
+          required
+        />
+      </div>
+
+      <div class="relative group">
+        <label
+          class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1 group-focus-within:text-black transition-colors"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          id="confirmPassword"
+          class="w-full border-b-2 border-zinc-200 bg-transparent py-3 focus:outline-none focus:border-black transition-colors placeholder:text-zinc-300 text-sm font-medium"
+          placeholder="••••••••"
+          required
+        />
+        <p
+          id="passwordError"
+          class="text-red-600 text-[10px] font-bold uppercase mt-1 hidden"
+        ></p>
+      </div>
+
+      <div class="relative group">
+        <label
+          class="block text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1 group-focus-within:text-black transition-colors"
+          >Address</label
+        >
+        <input
+          type="text"
+          id="register-address"
+          class="w-full border-b-2 border-zinc-200 bg-transparent py-3 focus:outline-none focus:border-black transition-colors placeholder:text-zinc-200 text-sm font-medium"
+          placeholder="42 Street..."
+          required
+        />
+      </div>
+
+      <div class="flex items-start space-x-3 pt-2">
+        <input
+          type="checkbox"
+          id="terms"
+          class="mt-1 accent-black h-4 w-4 border-zinc-300"
+          required
+        />
+        <label for="terms" class="text-[10px] text-zinc-500 leading-tight">
+          I agree to the
+          <a href="#" class="text-black underline font-bold">Privacy Policy</a>
+          and
+          <a href="#" class="text-black underline font-bold">Terms of Use</a>.
+        </label>
+      </div>
+
+      <div class="pt-6">
+        <button
+          id="registerBtn"
+          type="submit"
+          class="w-full bg-black text-white py-4 font-bold uppercase text-xs tracking-[0.3em] hover:bg-zinc-800 transition-all active:scale-[0.98] disabled:opacity-50"
+        >
+          Join Now
+        </button>
+      </div>
+
+      <p
+        id="registerError"
+        class="text-red-600 text-center text-[10px] font-bold uppercase hidden"
+      ></p>
+    </form>
+
+    <div class="mt-10 text-center pt-8 border-t border-zinc-100">
+      <p class="text-xs text-zinc-500">
+        Already a member?
+        <a
+          href="/login"
+          class="text-black font-black uppercase tracking-widest ml-2 hover:underline decoration-2 underline-offset-4"
+        >
+          Sign In
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', path='auth.js') }}"></script>
+
+{% endblock %}
